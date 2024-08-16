@@ -43,10 +43,12 @@ joystick.onButtonEvent(joystick.JoystickPin.P14, joystick.ButtonType.down, funct
 joystick.onButtonEvent(joystick.JoystickPin.P15, joystick.ButtonType.down, function () {
     radio.sendValue("C", 1)
 })
+let robotnum = 2
 serial.redirectToUSB()
+basic.showNumber(robotnum)
 joystick.initJoystickBit()
 radio.setTransmitSerialNumber(true)
-radio.setGroup(1)
+radio.setGroup(robotnum)
 radio.setTransmitPower(7)
 basic.forever(function () {
     radio.sendValue("X", joystick.getRockerValue(joystick.rockerType.X))
