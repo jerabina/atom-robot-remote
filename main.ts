@@ -31,9 +31,6 @@ control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_B, EventBusValue.MICROBIT_BUTT
 joystick.onButtonEvent(joystick.JoystickPin.P12, joystick.ButtonType.up, function () {
     radio.sendValue("F", 0)
 })
-radio.onReceivedValue(function (name, value) {
-    serial.writeValue(name, value)
-})
 joystick.onButtonEvent(joystick.JoystickPin.P13, joystick.ButtonType.up, function () {
     radio.sendValue("E", 0)
 })
@@ -44,7 +41,14 @@ joystick.onButtonEvent(joystick.JoystickPin.P15, joystick.ButtonType.down, funct
     radio.sendValue("C", 1)
 })
 let robotnum = 2
-serial.redirectToUSB()
+basic.showLeds(`
+    . . # . .
+    . # # # .
+    # . # . #
+    . . # . .
+    . . # . .
+    `)
+basic.pause(100)
 basic.showNumber(robotnum)
 joystick.initJoystickBit()
 radio.setTransmitSerialNumber(true)
